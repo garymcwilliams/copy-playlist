@@ -2,17 +2,22 @@ package uk.co.mcwilliams.copyplaylist
 
 import java.nio.file.Files
 
-def playlistDir = new File("D:\\Users\\gmcwilliams\\dropbox\\Personal\\documents\\docs")
-def playlistName = "BMW"
+Class configClass = getClass().classLoader.loadClass('uk.co.mcwilliams.copyplaylist.Config')
+def hostname = Inet4Address.localHost.hostName.replaceAll("-", "")
+ConfigObject config = new ConfigSlurper(hostname).parse(configClass)
+
+def playlistDir = new File(config.location.m3u)
+def playlistName = config.location.playlistname
 def playlistFile = new File(playlistDir, playlistName + ".m3u")
 
-def dstFolder = new File("D:\\temp\\${playlistName}")
+def dstFolder = new File(config.location.dest)
 dstFolder.mkdirs()
 
 def copiedFiles = []
 def existingFiles = []
 def invalidFiles = []
 def missingFiles = []
+def artistCheck = ""
 
 playlistFile.eachLine { fileName ->
 	if (! (fileName =~ /^#/) ) 
@@ -25,6 +30,11 @@ playlistFile.eachLine { fileName ->
 			{
 				def pathParts = musicFile.absolutePath.split("\\\\")
 				def artist = pathParts[-3]
+				if (artist != artistCheck)
+				{
+					println artist
+					artistCheck = artist
+				}
 				def album = pathParts[-2]
 				def track = pathParts[-1]
 				File dstMusic = new File(dstFolder, "${artist}\\${album}")

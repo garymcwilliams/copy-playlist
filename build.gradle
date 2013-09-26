@@ -32,3 +32,9 @@ uploadArchives {
        }
     }
 }
+
+task copyToDropbox(type: Copy) {
+	dependsOn jar
+	from('build\\libs')
+	into("D:\\Users\\gmcwilliams\\dropbox\\Personal")
+}
