@@ -1,0 +1,34 @@
+apply plugin: 'groovy'
+
+defaultTasks 'jar'
+
+sourceCompatibility = 1.7
+version = '1.0'
+jar {
+    manifest {
+        attributes 	'Implementation-Title': 'Copy Playlist',
+					'Implementation-Version': version,
+					'Main-Class': 'uk.co.mcwilliams.copyplaylist.CopyPlaylist'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.1.6'
+}
+
+jar {
+    dependsOn configurations.runtime
+    from { configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
