@@ -22,8 +22,8 @@ def artistCheck = ""
 playlistFile.eachLine { fileName ->
 	if (! (fileName =~ /^#/) ) 
 	{
-		if (! (fileName =~ /.m4a$/))
-		{
+//		if (! (fileName =~ /.m4a$/))
+//		{
 			File musicFile = new File(fileName)
 			
 			if (musicFile.exists())
@@ -50,9 +50,9 @@ playlistFile.eachLine { fileName ->
 			} else {
 				missingFiles << fileName
 			}
-		} else {
-			invalidFiles << fileName
-		}
+//		} else {
+//			invalidFiles << fileName
+//		}
 	}
 }
 
