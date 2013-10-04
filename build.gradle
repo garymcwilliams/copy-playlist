@@ -38,3 +38,7 @@ task copyToDropbox(type: Copy) {
 	from('build\\libs')
 	into("D:\\Users\\gmcwilliams\\dropbox\\Personal")
 }
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '1.8'
+}
