@@ -16,7 +16,7 @@ environments {
 	}
 	acer {
 		location {
-			m3u = "C:\\Users\\gary\\Documents\\My Dropbox\\Personal\\documents\\docs"
+			m3u = "D:\\Users\\gary\\Documents\\Dropbox\\Personal\\documents\\docs"
 			playlistname = "BMW"
 			dest = "D:\\temp\\${playlistname}"
 		}
