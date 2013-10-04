@@ -56,6 +56,9 @@ playlistFile.eachLine { fileName ->
 	}
 }
 
+println "playlist  :$playlistFile"
+println "Storing in:$dstFolder"
+
 println "Copied Files:${copiedFiles.size()}"
 File copiedLogfile = new File(dstFolder, "copied.txt")
 copiedLogfile.withWriter{ out ->

@@ -36,7 +36,7 @@ uploadArchives {
 task copyToDropbox(type: Copy) {
 	dependsOn jar
 	from('build\\libs')
-	into("D:\\Users\\gmcwilliams\\dropbox\\Personal")
+	into("D:\\Users\\gary\\Documents\\Dropbox\\Personal\\Documents\\docs")
 }
 
 task wrapper(type: Wrapper) {
